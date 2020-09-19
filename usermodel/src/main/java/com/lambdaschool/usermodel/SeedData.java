@@ -6,7 +6,6 @@ import com.github.javafaker.service.RandomService;
 import com.lambdaschool.usermodel.models.Role;
 import com.lambdaschool.usermodel.models.User;
 import com.lambdaschool.usermodel.models.UserRoles;
-import com.lambdaschool.usermodel.models.Useremail;
 import com.lambdaschool.usermodel.services.RoleService;
 import com.lambdaschool.usermodel.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
