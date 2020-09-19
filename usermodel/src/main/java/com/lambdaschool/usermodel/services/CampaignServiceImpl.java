@@ -5,11 +5,15 @@ import com.lambdaschool.usermodel.models.Campaign;
 import com.lambdaschool.usermodel.repository.CampaignRepository;
 import com.lambdaschool.usermodel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Transactional
+@Service(value = "campaignService")
 public class CampaignServiceImpl implements CampaignService
 {
     //autowires
@@ -89,4 +93,4 @@ public class CampaignServiceImpl implements CampaignService
     }
 }
 
-}
+

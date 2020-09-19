@@ -1,10 +1,7 @@
 package com.lambdaschool.usermodel.services;
 
 import com.lambdaschool.usermodel.exceptions.ResourceNotFoundException;
-import com.lambdaschool.usermodel.models.Role;
-import com.lambdaschool.usermodel.models.User;
-import com.lambdaschool.usermodel.models.UserRoles;
-import com.lambdaschool.usermodel.models.Useremail;
+import com.lambdaschool.usermodel.models.*;
 import com.lambdaschool.usermodel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,8 +96,6 @@ public class UserServiceImpl
         newUser.setUsername(user.getUsername()
             .toLowerCase());
         newUser.setPasswordNoEncrypt(user.getPassword());
-        newUser.setPrimaryemail(user.getPrimaryemail()
-            .toLowerCase());
 
         newUser.getRoles()
             .clear();
@@ -113,13 +108,12 @@ public class UserServiceImpl
                     addRole));
         }
 
-        newUser.getUseremails()
+        newUser.getCampaigns()
             .clear();
-        for (Useremail ue : user.getUseremails())
+        for (Campaign c : user.getCampaigns())
         {
-            newUser.getUseremails()
-                .add(new Useremail(newUser,
-                    ue.getUseremail()));
+            newUser.getCampaigns()
+                .add(new Campaign(c.getName(), c.getCategory(), c.getGoal(), c.getCurrency(), c.getLaunchdate(), c.isSuccessprediction(), newUser));
         }
 
         return userrepos.save(newUser);
@@ -146,12 +140,6 @@ public class UserServiceImpl
                 currentUser.setPasswordNoEncrypt(user.getPassword());
             }
 
-            if (user.getPrimaryemail() != null)
-            {
-                currentUser.setPrimaryemail(user.getPrimaryemail()
-                    .toLowerCase());
-            }
-
             if (user.getRoles()
                 .size() > 0)
             {
@@ -168,16 +156,15 @@ public class UserServiceImpl
                 }
             }
 
-            if (user.getUseremails()
+            if (user.getCampaigns()
                 .size() > 0)
             {
-                currentUser.getUseremails()
+                currentUser.getCampaigns()
                     .clear();
-                for (Useremail ue : user.getUseremails())
+                for (Campaign c : user.getCampaigns())
                 {
-                    currentUser.getUseremails()
-                        .add(new Useremail(currentUser,
-                            ue.getUseremail()));
+                    currentUser.getCampaigns()
+                            .add(new Campaign(c.getName(), c.getCategory(), c.getGoal(), c.getCurrency(), c.getLaunchdate(), c.isSuccessprediction(), currentUser));
                 }
             }
 
