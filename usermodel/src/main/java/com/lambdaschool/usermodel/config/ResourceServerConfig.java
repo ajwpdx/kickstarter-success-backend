@@ -63,7 +63,7 @@ public class ResourceServerConfig
                         "/users/**")
                 .hasAnyRole("ADMIN")
                 .antMatchers("/users/**",
-                        "/useremails/**",
+                        "/campaigns/**",
                         "/oauth/revoke-token",
                         "/logout")
                 .authenticated()

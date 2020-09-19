@@ -47,6 +47,16 @@ public class Campaign
         this.user = user;
     }
 
+    public long getCampaignid()
+    {
+        return campaignid;
+    }
+
+    public void setCampaignid(long campaignid)
+    {
+        this.campaignid = campaignid;
+    }
+
     public String getName()
     {
         return name;
