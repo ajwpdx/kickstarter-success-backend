@@ -12,9 +12,9 @@ public interface CampaignService
 
     void delete(long id);
 
-    Campaign save(Campaign campaign, long postid);
+    Campaign save(Campaign campaign, long campaignid);
 
-    Campaign update(Campaign campaign, long postid);
+    Campaign update(Campaign campaign, long campaignid);
 
     public void deleteAll();
 }

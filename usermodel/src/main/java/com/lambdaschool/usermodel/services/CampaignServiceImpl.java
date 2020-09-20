@@ -81,8 +81,9 @@ public class CampaignServiceImpl implements CampaignService
     //TODO
     @Transactional
     @Override
-    public Campaign update(Campaign campaign, long postid)
+    public Campaign update(Campaign campaign, long campaignid)
     {
+
         return null;
     }
 

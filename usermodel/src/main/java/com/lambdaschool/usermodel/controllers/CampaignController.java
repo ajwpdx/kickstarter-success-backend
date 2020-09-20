@@ -6,9 +6,8 @@ import com.lambdaschool.usermodel.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,12 +23,37 @@ public class CampaignController
     @Autowired
     UserService userService;
 
-// PreAuthorize this to Admin
+
+    //GET http://localhost:2019/campaigns/all
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping(value = "/all",
             produces = {"application/json"})
-    public ResponseEntity<?> listAllCampaigns(HttpServletRequest request)
+    public ResponseEntity<?> listAllCampaigns()
     {
         List<Campaign> allCampaigns = campaignService.findAll();
         return new ResponseEntity<>(allCampaigns, HttpStatus.OK);
+    }
+
+    // GET http://localhost:2019/campaigns/campaign/17
+    @GetMapping(value = "/campaign/{campaignid}",
+            produces = {"application/json"})
+    public ResponseEntity<?> getCampaignById(
+            HttpServletRequest request,
+            @PathVariable
+                    Long campaignid)
+    {
+        Campaign c = campaignService.findCampaignById(campaignid);
+        return new ResponseEntity<>(c,
+                HttpStatus.OK);
+    }
+
+    // DELETE http://localhost:2019/campaigns/campaign/17
+    @DeleteMapping(value = "/campaign/{campaignid}")
+    public ResponseEntity<?> deleteCampaignBy(
+            @PathVariable
+                    long campaignid)
+    {
+        campaignService.delete(campaignid);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
