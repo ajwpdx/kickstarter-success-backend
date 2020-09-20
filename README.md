@@ -31,7 +31,10 @@ Below is a list of the relevant endpoints that may be needed for the Kickstarter
 |DELETE | /campaigns/campaign/{id}      | Deletes a campaign                                     |                   Status OK    | Token                                     | Admin / User |
 
 ​
-## REGISTER AND LOGIN  
+## REGISTER AND LOGIN
+
+Anyone can sign up as a new user by create a username and password. Doing so grants them an access token and creates a new user in the database. 
+
 | Type  | Endpoint                      | What it is used for                                    | What it returns                | Requires                                  | Authorized?  |
 | :--:  | :----------:                  | :----------------------------------------------------: | :----------------------------: | :---------------------------------------: | :---------:  |
 | POST  | /createnewuser                | Registering a new user                                 |  Auth token                    | **username** and **password**             | Anyone       |
@@ -89,8 +92,18 @@ In order to change any user information the request must come from an admin or t
 
 
 ## CAMPAIGN
+
 In order to change any campaign information the request must come from an admin or the corresponding user to the campaign id provided in the endpoint.  
-​
+
+| Type  | Endpoint                      | What it is used for                                    | What it returns                | Requires                                  | Authorized?  |
+| :--:  | :----------:                  | :----------------------------------------------------: | :----------------------------: | :---------------------------------------: | :---------:  |
+| GET   | /campaigns/all                | Getting a full list of campaigns created by all users  | Campaign objects / Status OK   | Token                                     | Admin        |
+| GET   | /campaigns/campaign/{id}      | Finding a specific campaign by its id                  | Campaign object / Status OK    | Token                                     | Admin / User |
+| POST  | /campaigns/campaign           | Adds new campaign to database                          | Campaign / Status CREATED      | Token                                     | Admin / User |
+| PUT   | /campaigns/campaign/{id}      | Replaces entire campaign                               | Campaign object / Status OK    | Token / updated campaign object           | Admin / User |
+| PATCH | /campaigns/campaign/{id}      | Replaces part of a campaign                            | Campaign object / Status OK    | Token / updated part of campaign object   | Admin / User |
+|DELETE | /campaigns/campaign/{id}      | Deletes a campaign                                     |                   Status OK    | Token                                     | Admin / User |​
+
 #### The campaign object structure
 ```
 {
@@ -104,17 +117,18 @@ In order to change any campaign information the request must come from an admin 
     "user": {}
 }
 ```
-| Type  | Endpoint                      | What it is used for                                    | What it returns                | Requires                                  | Authorized?  |
-| :--:  | :----------:                  | :----------------------------------------------------: | :----------------------------: | :---------------------------------------: | :---------:  |
-| GET   | /campaigns/all                | Getting a full list of campaigns created by all users  | Campaign objects / Status OK   | Token                                     | Admin        |
-| GET   | /campaigns/campaign/{id}      | Finding a specific campaign by its id                  | Campaign object / Status OK    | Token                                     | Admin / User |
-| POST  | /campaigns/campaign           | Adds new campaign to database                          | Campaign / Status CREATED      | Token                                     | Admin / User |
-| PUT   | /campaigns/campaign/{id}      | Replaces entire campaign                               | Campaign object / Status OK    | Token / updated campaign object           | Admin / User |
-| PATCH | /campaigns/campaign/{id}      | Replaces part of a campaign                            | Campaign object / Status OK    | Token / updated part of campaign object   | Admin / User |
-|DELETE | /campaigns/campaign/{id}      | Deletes a campaign                                     |                   Status OK    | Token                                     | Admin / User |
+
 ​
 ## ROLE
+
 ​Only users with an Admin role can make changes to other users roles. 
+
+| Type  | Endpoint                      | What it is used for                                    | What it returns                | Requires                                  | Authorized?  |
+| :--:  | :----------:                  | :----------------------------------------------------: | :----------------------------: | :---------------------------------------: | :---------:  |
+| GET   | /roles/roles                  | Getting a list of roles                                | Role objects                   | Token                                     | Admin        |
+| GET   | /roles/role/{id}              | Find a specific role by id                             | Role object                    | Token                                     | Admin        |
+| POST  | /roles/role                   | Adds new role to database and returns                  | Status CREATED                 | Token / full role object                  | Admin        |
+| PUT   | /roles/role/{id}              | Edit a role                                            | The roleid and Status OK       | Token / full role object                  | Admin        |
 
 #### The role object is of a structure
 ```
@@ -124,9 +138,3 @@ In order to change any campaign information the request must come from an admin 
     "users": []
 }
 ```
-| Type  | Endpoint                      | What it is used for                                    | What it returns                | Requires                                  | Authorized?  |
-| :--:  | :----------:                  | :----------------------------------------------------: | :----------------------------: | :---------------------------------------: | :---------:  |
-| GET   | /roles/roles                  | Getting a list of roles                                | Role objects                   | Token                                     | Admin        |
-| GET   | /roles/role/{id}              | Find a specific role by id                             | Role object                    | Token                                     | Admin        |
-| POST  | /roles/role                   | Adds new role to database and returns                  | Status CREATED                 | Token / full role object                  | Admin        |
-| PUT   | /roles/role/{id}              | Edit a role                                            | The roleid and Status OK       | Token / full role object                  | Admin        |
