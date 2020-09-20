@@ -16,7 +16,7 @@ import java.util.List;
 @Service(value = "campaignService")
 public class CampaignServiceImpl implements CampaignService
 {
-    //autowires
+    //Autowires
     @Autowired
     CampaignRepository campaignrepos;
 
@@ -30,7 +30,7 @@ public class CampaignServiceImpl implements CampaignService
     private UserAuditing userAuditing;
 
 
-    //servicers
+    //Servicers
     @Override
     public List<Campaign> findAll()
     {
@@ -61,6 +61,7 @@ public class CampaignServiceImpl implements CampaignService
         }
     }
 
+    //TODO
     @Transactional
     @Override
     public Campaign save(Campaign campaign, long postid)
@@ -73,11 +74,11 @@ public class CampaignServiceImpl implements CampaignService
                     .orElseThrow(() -> new ResourceNotFoundException("Post id " + campaign.getCampaignid() + " not found!"));
         }
 
-    ///write out the rest of this
 
         return null;
     }
 
+    //TODO
     @Transactional
     @Override
     public Campaign update(Campaign campaign, long postid)

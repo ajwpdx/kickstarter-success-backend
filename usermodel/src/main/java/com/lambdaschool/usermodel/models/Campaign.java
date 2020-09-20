@@ -47,6 +47,17 @@ public class Campaign
         this.user = user;
     }
 
+    public Campaign(String name, String category, long goal, String currency, Date launchdate, boolean successprediction)
+    {
+        this.name = name;
+        this.category = category;
+        this.goal = goal;
+        this.currency = currency;
+        this.launchdate = launchdate;
+        this.successprediction = successprediction;
+
+    }
+
     public long getCampaignid()
     {
         return campaignid;
