@@ -2,6 +2,9 @@ package com.lambdaschool.usermodel.services;
 
 import com.lambdaschool.usermodel.exceptions.ResourceNotFoundException;
 import com.lambdaschool.usermodel.models.Campaign;
+import com.lambdaschool.usermodel.models.Role;
+import com.lambdaschool.usermodel.models.User;
+import com.lambdaschool.usermodel.models.UserRoles;
 import com.lambdaschool.usermodel.repository.CampaignRepository;
 import com.lambdaschool.usermodel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,18 +67,25 @@ public class CampaignServiceImpl implements CampaignService
     //TODO
     @Transactional
     @Override
-    public Campaign save(Campaign campaign, long postid)
+    public Campaign save(Campaign campaign)
     {
         Campaign newCampaign = new Campaign();
 
         if (campaign.getCampaignid() != 0)
         {
             campaignrepos.findById(campaign.getCampaignid())
-                    .orElseThrow(() -> new ResourceNotFoundException("Post id " + campaign.getCampaignid() + " not found!"));
+                    .orElseThrow(() -> new ResourceNotFoundException("Campaign id " + campaign.getCampaignid() + " not found!"));
+
         }
 
+        newCampaign.setName(campaign.getName());
+        newCampaign.setCategory(campaign.getCategory());
+        newCampaign.setGoal(campaign.getGoal());
+        newCampaign.setCurrency(campaign.getCurrency());
+        newCampaign.setLaunchdate(campaign.getLaunchdate());
+        newCampaign.setSuccessprediction(campaign.isSuccessprediction());
 
-        return null;
+        return campaignrepos.save(newCampaign);
     }
 
     //TODO

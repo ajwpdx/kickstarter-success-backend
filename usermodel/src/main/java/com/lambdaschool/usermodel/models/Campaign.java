@@ -13,16 +13,22 @@ public class Campaign
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long campaignid;
 
+    @Column(nullable = true)
     private String name;
 
+    @Column(nullable = true)
     private String category;
 
+    @Column(nullable = true)
     private long goal;
 
+    @Column(nullable = true)
     private String currency;
 
+    @Column(nullable = true)
     private Date launchdate;
 
+    @Column(nullable = true)
     private boolean successprediction;
 
     @ManyToOne

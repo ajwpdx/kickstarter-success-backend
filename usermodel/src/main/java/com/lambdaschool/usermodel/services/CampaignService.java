@@ -12,7 +12,7 @@ public interface CampaignService
 
     void delete(long id);
 
-    Campaign save(Campaign campaign, long campaignid);
+    Campaign save(Campaign campaign);
 
     Campaign update(Campaign campaign, long campaignid);
 
