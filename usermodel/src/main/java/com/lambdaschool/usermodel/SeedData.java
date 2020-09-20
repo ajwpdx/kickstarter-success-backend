@@ -55,11 +55,11 @@ public class SeedData
         roleService.deleteAll();
         Role r1 = new Role("admin");
         Role r2 = new Role("user");
-        Role r3 = new Role("data");
+
 
         r1 = roleService.save(r1);
         r2 = roleService.save(r2);
-        r3 = roleService.save(r3);
+
 
         // admin, data, user
         User u1 = new User("admin",
@@ -68,8 +68,7 @@ public class SeedData
                 .add(new UserRoles(u1, r1));
         u1.getRoles()
                 .add(new UserRoles(u1, r2));
-        u1.getRoles()
-                .add(new UserRoles(u1, r3));
+
 
         u1.getCampaigns()
                 .add(new Campaign("Student Operated Fabrication Lab","Fabrication Tools",5000, "USD", new Date(), true, u1));
@@ -82,12 +81,10 @@ public class SeedData
         // data, user
         User u2 = new User("hungtruong",
                            "password");
-        u2.getRoles()
-                .add(new UserRoles(u2, r1));
+
         u2.getRoles()
                 .add(new UserRoles(u2, r2));
-        u2.getRoles()
-                .add(new UserRoles(u2, r3));
+
 
         u2.getCampaigns()
                 .add(new Campaign("Crap Amidst Hilarity, vol. 1","Playing Cards",7500, "USD", new Date(), true, u2));
@@ -102,8 +99,7 @@ public class SeedData
         // user
         User u3 = new User("tristanbrown",
                            "password");
-        u3.getRoles()
-                .add(new UserRoles(u3, r1));
+
         u3.getRoles()
                 .add(new UserRoles(u3, r2));
 
@@ -119,7 +115,7 @@ public class SeedData
         User u4 = new User("kalvinzhao",
                            "password");
         u4.getRoles()
-                .add(new UserRoles(u4, r1));
+                .add(new UserRoles(u4, r2));
 
         u4.getCampaigns()
                 .add(new Campaign("A photobook of life in Japan","Photography",7500, "USD", new Date(), true));
@@ -133,7 +129,7 @@ public class SeedData
         User u5 = new User("brandononeal",
                            "password");
         u5.getRoles()
-                .add(new UserRoles(u5, r1));
+                .add(new UserRoles(u5, r2));
 
         u5.getCampaigns()
                 .add(new Campaign("Kickstarter Success Test", "Mobile Games", 25000, "USD", new Date(), true, u5));
@@ -142,7 +138,7 @@ public class SeedData
 
         userService.save(u5);
 
-        User u6 = new User("normaluser",
+        User u6 = new User("ajwpdx",
                 "password");
         u6.getRoles()
                 .add(new UserRoles(u6, r2));
