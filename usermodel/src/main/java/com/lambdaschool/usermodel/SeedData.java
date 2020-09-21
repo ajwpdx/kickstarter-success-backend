@@ -71,11 +71,11 @@ public class SeedData
 
 
         u1.getCampaigns()
-                .add(new Campaign("Student Operated Fabrication Lab","Fabrication Tools",5000, "USD", new Date(), true, u1));
+                .add(new Campaign("Student Operated Fabrication Lab","Fabrication Tools",5000, "USD", new Date(), true));
         u1.getCampaigns()
-                .add(new Campaign("Strawberry Fields Café and Patisserie", "Food", 50000, "CAD", new Date(), false, u1));
+                .add(new Campaign("Strawberry Fields Café and Patisserie", "Food", 50000, "CAD", new Date(), false));
         u1.getCampaigns()
-                .add(new Campaign("Operación Douve", "Action", 100, "EUR", new Date(), true, u1));
+                .add(new Campaign("Operación Douve", "Action", 100, "EUR", new Date(), true));
         userService.save(u1);
 
         // data, user
@@ -87,11 +87,11 @@ public class SeedData
 
 
         u2.getCampaigns()
-                .add(new Campaign("Crap Amidst Hilarity, vol. 1","Playing Cards",7500, "USD", new Date(), true, u2));
+                .add(new Campaign("Crap Amidst Hilarity, vol. 1","Playing Cards",7500, "USD", new Date(), true));
         u2.getCampaigns()
-                .add(new Campaign("Kaleidoscope Man", "Film & Video", 60000, "GBP", new Date(), false, u2));
+                .add(new Campaign("Kaleidoscope Man", "Film & Video", 60000, "GBP", new Date(), false));
         u2.getCampaigns()
-                .add(new Campaign("Operation: Make Stuff", "Video Games", 200, "EUR", new Date(), true, u2));
+                .add(new Campaign("Operation: Make Stuff", "Video Games", 200, "EUR", new Date(), true));
 
 
         userService.save(u2);
@@ -132,9 +132,9 @@ public class SeedData
                 .add(new UserRoles(u5, r2));
 
         u5.getCampaigns()
-                .add(new Campaign("Kickstarter Success Test", "Mobile Games", 25000, "USD", new Date(), true, u5));
+                .add(new Campaign("Kickstarter Success Test", "Mobile Games", 25000, "USD", new Date(), true));
         u5.getCampaigns()
-                .add(new Campaign("Test 3: this is a test", "Film & Video", 600, "GBP", new Date(), false, u5));
+                .add(new Campaign("Test 3: this is a test", "Film & Video", 600, "GBP", new Date(), false));
 
         userService.save(u5);
 
@@ -144,9 +144,9 @@ public class SeedData
                 .add(new UserRoles(u6, r2));
 
         u6.getCampaigns()
-                .add(new Campaign("Triumph: The Card Game", "Mobile Games", 25000, "USD", new Date(), true, u6));
+                .add(new Campaign("Triumph: The Card Game", "Mobile Games", 25000, "USD", new Date(), true));
         u6.getCampaigns()
-                .add(new Campaign("Test #2: this is a test", "Film & Video", 600, "GBP", new Date(), false, u6));
+                .add(new Campaign("Test #2: this is a test", "Film & Video", 600, "GBP", new Date(), false));
 
         userService.save(u6);
 

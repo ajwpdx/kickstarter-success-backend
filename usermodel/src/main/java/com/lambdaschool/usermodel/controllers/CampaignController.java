@@ -67,17 +67,12 @@ public class CampaignController
     // POST http://localhost:2019/campaigns/campaign
     @PostMapping(value = "/campaign",
             consumes = "application/json")
-    public ResponseEntity<?> addNewCampaign(
-            @Valid
-            @RequestBody
-                    Campaign newcampaign, Authentication auth) throws
-            URISyntaxException
+    public ResponseEntity<?> addNewCampaign(@Valid @RequestBody Campaign newcampaign)
     {
-        User u = userService.findByName(auth.getName());
-
         newcampaign.setCampaignid(0);
         newcampaign = campaignService.save(newcampaign);
 
+        // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newCampaignURI = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("campaigns/campaign/{campaignid}")
@@ -85,7 +80,7 @@ public class CampaignController
                 .toUri();
         responseHeaders.setLocation(newCampaignURI);
 
-        return new ResponseEntity<>(newcampaign,
+        return new ResponseEntity<>(null,
                 responseHeaders,
                 HttpStatus.CREATED);
 

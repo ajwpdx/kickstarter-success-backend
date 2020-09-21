@@ -30,7 +30,8 @@ Below is a list of the relevant endpoints that may be needed for the Kickstarter
 | PATCH | /campaigns/campaign/{id}      | Replaces part of a campaign                            | Campaign object / Status OK    | Token / updated part of campaign object   | Admin / User |
 |DELETE | /campaigns/campaign/{id}      | Deletes a campaign                                     |                   Status OK    | Token                                     | Admin / User |
 
-​
+Postman Link: https://www.getpostman.com/collections/238a5f1cc7efbbf96e36​
+
 ## REGISTER AND LOGIN
 
 Anyone can sign up as a new user by create a username and password. Doing so grants them an access token and creates a new user in the database. 

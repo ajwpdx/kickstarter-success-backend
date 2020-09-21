@@ -69,23 +69,7 @@ public class CampaignServiceImpl implements CampaignService
     @Override
     public Campaign save(Campaign campaign)
     {
-        Campaign newCampaign = new Campaign();
-
-        if (campaign.getCampaignid() != 0)
-        {
-            campaignrepos.findById(campaign.getCampaignid())
-                    .orElseThrow(() -> new ResourceNotFoundException("Campaign id " + campaign.getCampaignid() + " not found!"));
-
-        }
-
-        newCampaign.setName(campaign.getName());
-        newCampaign.setCategory(campaign.getCategory());
-        newCampaign.setGoal(campaign.getGoal());
-        newCampaign.setCurrency(campaign.getCurrency());
-        newCampaign.setLaunchdate(campaign.getLaunchdate());
-        newCampaign.setSuccessprediction(campaign.isSuccessprediction());
-
-        return campaignrepos.save(newCampaign);
+        return null;
     }
 
     //TODO

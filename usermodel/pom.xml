@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lambdaschool</groupId>
-    <artifactId>usermodel</artifactId>
+    <artifactId>ks-success</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>usermodel</name>
+    <name>ks-success</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -34,6 +34,11 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
 
         <dependency>
@@ -106,7 +111,24 @@
     </dependencies>
 
     <build>
+        <finalName>kickstarter-success-app</finalName>
         <plugins>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <appName>${project.build.finalName}</appName>
+                    <includeTarget>false</includeTarget>
+                    <includes>
+                        <include>${project.build.directory}/${project.build.finalName}.jar</include>
+                    </includes>
+                    <jdkVersion>${java.version}</jdkVersion>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/${project.build.finalName}.jar</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
